@@ -1,9 +1,9 @@
-# FUZV (Verified Zero-shot Federated Unlearning)
+# A Zero-Shot Federated Unlearning Framework with Stability Verification
 ## About The Project
-FUZV allows a federated client to unlearn a class from the Federated Learning system and eliminate the influences of target data on the global model trained by the standard Federated Learning. 
+Our method allows a federated client to unlearn a class for zero-shot Federated Unlearning, eliminating the influences of target data on the global model trained. 
 
 ## Presented Unlearning Methods
-The parameters of the client model saved by users during the standard FL process are utilized as the step size for server-side pseudodata unlearning. Using this step size, the pseudodata generator refines the target category forgetting through KL divergence amplification, while retaining non-target categories using W2 distance minimization. The refined generator updates the server model, which becomes the initialization for the next round of training. A dynamic adjustment mechanism adjusts rhot to optimize KL temperature and knowledge distillation, balancing forgetting and retention. The updated model is validated locally by comparing W2 distances and attack metrics without client-side pseudodata generation.
+We propose a novel federated unlearning framework that eliminates class-specific knowledge without requiring access to original client data. The method leverages a pseudo-data generator to simulate both target and retained categories under Wasserstein-constrained geometry-aware regularization. To achieve effective and verifiable forgetting, we introduce a distillation-based unlearning process that simultaneously maximizes the attention discrepancy for the target class and minimizes distributional divergence for retained knowledge. Furthermore, a dynamic information bottleneck module adaptively adjusts the distillation temperature and attention weights, ensuring a balance between unlearning completeness and model utility preservation. Our framework supports zero-shot unlearning, requires no client-side participation, and is resilient to non-IID distributions.
 
 Besides, this code also provides the function of membership inference attacks and backdoor attack, to evaluate whether the unlearned data has been unlearned by the model. 
 
